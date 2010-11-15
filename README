@@ -1,0 +1,29 @@
+== This is a quick hack to make Translink's JSON API a bit more useful ==
+
+XXX Todo: figure out recursive git submodules so I can use that here. In the
+meantime you need to create:
+
+./vender/
+./public/js/vendor/
+
+and check out socket.io and qunit:
+
+cd ./vendor
+git clone git://github.com/LearnBoost/Socket.IO-node.git socket.io --recursive
+
+cd ../public/js/vendor
+git clone https://github.com/jquery/qunit.git
+git clone --recursive https://github.com/LearnBoost/Socket.IO.git socket.io
+
+
+Intended features:
+
+ - caching websocket server implementation ( using Socket.IO client/server )
+ - JSONP support for cross-domain use
+ - ???
+ - PROFIT!
+ 
+Dependencies:
+
+ - Soket.IO client and server
+ - Qunit for tests
