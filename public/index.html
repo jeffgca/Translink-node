@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+<title>Translink Data websocket server</title>
+<link href="js/vendor/qunit/qunit/qunit.css" media="screen" rel="stylesheet" type="text/css" />
+<script type="application/x-javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="application/x-javascript" src="js/vendor/qunit/qunit/qunit.js"></script>
+
+<!-- socket.io client -->
+
+
+
+<script> 
+ 
+</script> 
+<script type="application/x-javascript" src="js/vendor/socket.io/socket.io.js"></script>
+<script type="application/x-javascript">
+
+var socket = new io.Socket(null, {port:8080, transports: ['websocket', 'flashsocket', 'htmlfile', 'xhr-multipart', 'xhr-polling']});
+socket.on('connect', function() { console.log('connected'); });
+socket.on('message', function(message) { console.log(message) });
+socket.on('disconnect', function() { console.log('connected'); });
+
+$(document).ready(function() {
+
+    socket.connect();
+
+});
+
+</script>
+<script type="application/x-javascript" src="js/test/translink_tests.js"></script>
+
+</head>
+<body>
+
+<h1 id="qunit-header">QUnit Test Suite</h1>
+<h2 id="qunit-banner"></h2>
+<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture">test markup</div>
+
+</body>
+</html>
