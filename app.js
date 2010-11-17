@@ -18,12 +18,12 @@ var log = function (msg) {
 
 var VENDOR_PATH = fs.realpathSync(__dirname + '/vendor');
 require.paths.unshift(VENDOR_PATH);
-var io = require('socket.io/lib/socket.io');
+var io = require('socket.io-node/lib/socket.io');
 
 var LIB_PATH = fs.realpathSync(__dirname + '/lib');
 require.paths.unshift(LIB_PATH);
 
-var app = require('translink.js');
+var app = require('translink');
 
 server = http.createServer(function(req, res){
     // your normal server code
@@ -36,10 +36,9 @@ server.listen(8080);
 
 var buffer = [], json = JSON.stringify;
 
-
-
 io.listen(server, {
     onClientConnect: function(client) {
+	D(client)
         client.send({connection_id: client.sessionId});
     },
     onClientDisconnect: function(client) {
@@ -47,6 +46,8 @@ io.listen(server, {
     },
     onClientMessage: function(message, client) {
         /* we expect JSON always */
+	sys.puts("got here...");
+	D(message);
         try {
             var payload = JSON.parse(message);
         }

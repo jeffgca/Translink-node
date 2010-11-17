@@ -8,7 +8,7 @@ test("Test if socket is an object", function() {
 });
 
 test("Test is we can ping", function() {
-    var ping = {payload}
-    socket.send()
+    console.log('this is ping');
+    socket.send(JSON.stringify({method:'ping', params: {}}));
     ok(true);
 })
